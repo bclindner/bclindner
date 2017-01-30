@@ -1,0 +1,86 @@
+body{
+  font-family: sans-serif;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#file{
+  display: none;
+}
+#filedrag{
+  width: 100%;
+  text-align: center;
+  height: 100vh;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s;
+  font: 200% sans-serif;
+}
+#about{
+  width: 50%;
+  padding: 5%;
+  margin-top: 0;
+  text-align: left;
+  position: absolute;
+  top: 30vh;
+  background-color: #ccc;
+}
+.ready{
+  background-color: #eee;
+}
+.success{
+  background-color: #45e83a;
+}
+.warn{
+  background-color: #ffe92b;
+}
+.fail{
+  background-color: #ff4949;
+}
+#errors{
+  text-align: left;
+  font: 50% monospace;
+  height: 240px;
+  width: 640px;
+  background-color: #eee;
+  overflow-y: scroll;
+}
+.ready > #errors, .success > #errors{
+  display: none;
+}
+.error{
+  margin: 4px;
+  padding: 4px;
+  background-color: #ff8282;
+}
+.warning{
+  margin: 4px;
+  padding: 4px;
+  background-color: #f7ea7b;
+}
+#title{
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+}
+#title > h1 {
+  margin: 8px;
+}
+#filename{
+font-size: 50%;
+margin: 8px;
+}
+#dragcontent{
+  margin-top: 8px;
+}
+
