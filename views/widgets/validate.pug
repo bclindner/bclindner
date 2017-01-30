@@ -3,12 +3,13 @@ html
   head
     title Drag 'n Drop!
     meta(charset='utf-8')
-    link(rel='stylesheet' href='static/css/main.css')
+    link(rel='stylesheet' href='static/css/validate.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
     script(src='static/js/validate.js')
   body
-    header
-      h1#title brian's validator
+    div#title
+      h1 brian's unified validator
+      a(href="validate/about") (what is this?)
     form#dndvalidator
       input(type='file' name='file' id='file')
       label(for='file')

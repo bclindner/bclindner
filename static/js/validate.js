@@ -6,7 +6,6 @@ $(document).ready(function(){
   })
   .on('drop',function(e){
     var file = e.originalEvent.dataTransfer.files[0];
-    console.log(file);
     if(file.type == "text/html"){
       htmlValidate(file);
     }
@@ -38,7 +37,6 @@ function htmlValidate(file){
       console.log("validator.nu request successful");
       var errors = data.messages;
       var errored = false;
-      console.log(errors);
       if(errors.length){
         for(var i=0;i<errors.length;i++){
           if(errors[i].subType == "warning"){
@@ -90,7 +88,6 @@ function cssValidate(file){
     .done(function(data){
       console.log("internal css validation request successful");
       var errors = data.messages;
-      console.log(errors)
       var errored = false;
       var warned = false;
       if(errors.length){
