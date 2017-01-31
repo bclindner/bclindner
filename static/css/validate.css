@@ -1,9 +1,11 @@
 body{
   font-family: sans-serif;
   background-color: #eee;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 #file{
   display: none;
@@ -23,14 +25,21 @@ body{
   transition: background-color 0.5s;
   font: 200% sans-serif;
 }
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+
+}
 #about{
   width: 50%;
   padding: 5%;
-  margin-top: 0;
   text-align: left;
-  position: absolute;
-  top: 30vh;
   background-color: #ccc;
+  margin: auto;
 }
 .ready{
   background-color: #eee;
@@ -48,7 +57,8 @@ body{
   text-align: left;
   font: 50% monospace;
   height: 240px;
-  width: 640px;
+  width: 50%;
+  max-width: 800px;
   background-color: #eee;
   overflow-y: scroll;
 }

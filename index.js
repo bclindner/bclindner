@@ -35,4 +35,5 @@ app.get('/', (req, res) => {
 })
 app.listen(31415, () =>{
   console.log('listening on port 31415')
+  console.log(linter.getRules())
 })
