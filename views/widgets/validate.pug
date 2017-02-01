@@ -11,6 +11,10 @@ html
       h1 brian's unified validator
       a(href="validate/about") (what is this?)
     form#dndvalidator
+      div#options
+        label
+          input(type='checkbox' value='colorblind' id='colorblind')
+          span colorblind mode
       input(type='file' name='file' id='file')
       label(for='file')
       div#filedrag.ready

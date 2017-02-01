@@ -1,4 +1,15 @@
 $(document).ready(function(){
+  //option event
+  $('#colorblind').change(function(){
+    if($('#colorblind').prop('checked')){
+      $("link[rel='stylesheet']").attr('href','/static/css/validate.cb.css');
+      console.log("switching to colorblind stylesheet")
+    }
+    else{
+      $("link[rel='stylesheet']").attr('href','/static/css/validate.css');
+      console.log("switching to normal stylesheet")
+    }
+  });
   $("#filedrag").click(false);
   $("#filedrag").on('drag dragstart dragend dragover dragenter dragleave drop',function(e){
     e.preventDefault();
@@ -16,16 +27,11 @@ $(document).ready(function(){
 });
 
 function htmlValidate(file){
-  $('#errors').html('')
-  var reader = new FileReader();
-  reader.onload = function(e){
-    $('#filename').text(file.name)
-    $('#filedrag').removeClass();
-    $('#filedrag').addClass('ready');
-    $('#dragcontent').text('give it a sec...');
+  giveItASec(file.name);
+  readFile(file,function(result){
     req = new FormData();
     req.append('out','json');
-    req.append('content',reader.result);
+    req.append('content',result);
     $.ajax("http://html5.validator.nu/",{
       data: req,
       dataType: 'json',
@@ -35,96 +41,81 @@ function htmlValidate(file){
     })
     .done(function(data){
       console.log("validator.nu request successful");
-      var errors = data.messages;
-      var errored = false;
-      if(errors.length){
-        for(var i=0;i<errors.length;i++){
-          if(errors[i].subType == "warning"){
-            var error = $('<div class="warning"></div>');
-            warned = true;
-          }
-          else if(errors[i].type == "error"){
-            var error = $('<div class="error"></div>');
-            errored = true;
-          }
-          error.html('Line '+errors[i].lastLine+", column "+errors[i].lastColumn+": <br/><strong>"+errors[i].message+"</strong>");
-          $('#errors').append(error);
-        }
-        $('#filedrag').removeClass();
-        if(errored){
-          $('#filedrag').addClass('fail')
-          $('#dragcontent').text(errors.length+' errors/warnings:');
-        }
-        else if (!errored && warned){
-          $('#filedrag').addClass('warn')
-          $('#dragcontent').text(errors.length+' warnings:');
-        }
-      }
-      else{
-        $('#filedrag').removeClass();
-        $('#filedrag').addClass('success');
-        $('#dragcontent').text('validation successful!');
-      }
+      handleErrors(data.messages)
     })
-    .fail(function(){
-        $('#filedrag').removeClass();
-        $('#filedrag').addClass('fail');
-        $('#dragcontent').text("whoa! validator's broken.");
-    });
-  }
-  reader.readAsText(file);
+    .fail(handleFail);
+  });
 }
 function cssValidate(file){
-  var reader = new FileReader();
-  reader.onload = function(e){
-    $('#filedrag').removeClass();
-    $('#filedrag').addClass('ready');
-    $('#dragcontent').text('give it a sec...');
+  giveItASec(file.name)
+  readFile(file,function(result){
     $.ajax("validate",{
-      data: {'css': reader.result},
+      data: {'css': result},
       dataType: 'json',
       type: 'POST',
     })
     .done(function(data){
       console.log("internal css validation request successful");
-      var errors = data.messages;
-      var errored = false;
-      var warned = false;
-      if(errors.length){
-        $('#errors').html('');
-        for(var i=0;i<errors.length;i++){
-          if(errors[i].type == "warning"){
-            var error = $('<div class="warning"></div>');
-            warned = true;
-          }
-          else if(errors[i].type == "error"){
-            var error = $('<div class="error"></div>');
-            errored = true;
-          }
-          error.html('Line '+errors[i].line+", column "+errors[i].col+": <br/><strong>"+errors[i].message+"</strong>");
-          $('#errors').append(error);
-        }
-        $('#filedrag').removeClass();
-        if(errored){
-          $('#filedrag').addClass('fail')
-          $('#dragcontent').text(errors.length+' errors/warnings:');
-        }
-        else if (!errored && warned){
-          $('#filedrag').addClass('warn')
-          $('#dragcontent').text(errors.length+' warnings:');
-        }
-      }
-      else{
-        $('#filedrag').removeClass();
-        $('#filedrag').addClass('success');
-        $('#dragcontent').text('validation successful!');
-      }
+      handleErrors(data.messages)
     })
-    .fail(function(){
-        $('#filedrag').removeClass();
-        $('#filedrag').addClass('fail');
-        $('#dragcontent').text("whoa! validator's broken.");
-    });
+    .fail(handleFail);
+  });
+}
+//helper functions
+function readFile(file,callback){
+  var reader = new FileReader();
+  reader.onload = function(e){
+    callback(reader.result);
   }
   reader.readAsText(file);
+}
+function handleErrors(errors){
+  var errored = 0;
+  for(var i=0;i<errors.length;i++){
+    e = errors[i];
+    if(e.type == "error"){
+      var error = $('<div class="error"></div>');
+      errored = 1;
+    }
+    else{
+      var error = $('<div class="warning"></div>');
+      if(errored != 1) errored = 2;
+    }
+    if(typeof e.lastLine === undefined){
+      error.html('Line '+e.line+", column "+e.col+": <br/><strong>"+e.message+"</strong>");
+    }
+    else{
+      error.html('Line '+e.lastLine+", column "+e.lastColumn+": <br/><strong>"+e.message+"</strong>");
+    }
+    $('#errors').append(error);
+  }
+  $('#filedrag').removeClass();
+  if(errored == 1){
+    $('#filedrag').addClass('fail')
+    $('#dragcontent').text(errors.length+' errors/warnings:');
+  }
+  else if (errored == 2){
+    $('#filedrag').addClass('warn')
+    $('#dragcontent').text(errors.length+' warnings:');
+  }
+  else{
+    $('#filedrag').removeClass();
+    $('#filedrag').addClass('success');
+    $('#dragcontent').text('validation successful!');
+  }
+}
+function giveItASec(filename){
+  $('#errors').html('')
+  $('#filename').text(filename)
+  $('#filedrag').removeClass();
+  $('#filedrag').addClass('ready');
+  $('#dragcontent').text('give it a sec...');
+}
+function handleFail(xhr,status,error){
+  $('#filedrag').removeClass();
+  $('#filedrag').addClass('fail');
+  $('#dragcontent').text("whoa! validator's broken.");
+  var error = $('<div class="error"></div>');
+  error.html("VALIDATOR ERROR: <br/><strong>"+xhr.responseText+"</strong>");
+  $('#errors').append(error);
 }
