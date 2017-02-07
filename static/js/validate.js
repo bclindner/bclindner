@@ -81,11 +81,13 @@ function handleErrors(errors){
       var error = $('<div class="warning"></div>');
       if(errored != 1) errored = 2;
     }
-    if(typeof e.lastLine === undefined){
-      error.html('Line '+e.line+", column "+e.col+": <br/><strong>"+e.message+"</strong>");
+    var line = e.line || e.lastLine;
+    var col = e.col || e.lastColumn;
+    if(typeof e.line === undefined){
+      error.html('Line '+line+", column "+col+": <br/><strong>"+e.message+"</strong>");
     }
     else{
-      error.html('Line '+e.lastLine+", column "+e.lastColumn+": <br/><strong>"+e.message+"</strong>");
+      error.html('Line '+line+", column "+col+": <br/><strong>"+e.message+"</strong>");
     }
     $('#errors').append(error);
   }

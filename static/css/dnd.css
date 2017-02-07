@@ -52,7 +52,7 @@ body{
 .fail{
   background-color: #ff4949;
 }
-#errors{
+.details{
   text-align: left;
   font: 50% monospace;
   height: 240px;
@@ -98,4 +98,16 @@ body{
   left: 0.5em;
   z-index: 2;
 }
-
+#filelist{
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+#filelist>select{
+  padding: 0.2em;
+  margin: 0.5em;
+  min-width: 10em;
+}

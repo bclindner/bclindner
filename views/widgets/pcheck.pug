@@ -1,27 +1,36 @@
 doctype html
 html
   head
-    title no cheaters allowed!
+    title no cheating!
     meta(charset='utf-8')
-    link(rel='stylesheet' href='static/css/pcheck.css')
+    link(rel='stylesheet' href='static/css/dnd.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
-    script(src='/static/js/diff.min.js')
-    script(src='/static/js/pcheck.js')
+    script(src='static/js/diff.min.js')
+    script(src='static/js/pcheck.js')
   body
-    #title
+    div#title
       h1 brian's plagiarism checker
-      p based off of kevin decker's #[a(href='https://github.com/kpdecker/jsdiff') jsdiff] script
-    #checker
-        .col
-          form(id="pcheck1")
-            input(type='file' name='file1' id='file1')
-            label(for='file1')
-            #filedrag 
-              p drop file 1 here!
-        .col
-          form(id="pcheck2")
-            label(for='file2')
-            input(type='file' name='file2' id='file2')
-            #filedrag
-              p drop file 2 here!
-
+      div#filelist
+        select#list1(name='list1')
+        select#list2(name='list2')
+    form#dnd
+      div#options
+        label
+          span diff method
+          br
+          select(name='methods' id='methods')
+            option(value='chars' selected) character
+            option(value='words') word
+            option(value='lines') line
+        br
+        label
+          span colorblind mode
+          input(type='checkbox' value='colorblind' id='colorblind')
+        br
+      input(type='file' name='file' id='file')
+      label(for='file')
+      div#filedrag.ready
+        p#filename
+        p#dragcontent drop a file here
+          div.details
+            pre#diff
