@@ -2,11 +2,11 @@ $(document).ready(function(){
   //option event
   $('#colorblind').change(function(){
     if($('#colorblind').prop('checked')){
-      $("link[rel='stylesheet']").attr('href','/static/css/validate.cb.css');
+      $("link[rel='stylesheet']").attr('href','/static/css/dnd.cb.css');
       console.log("switching to colorblind stylesheet")
     }
     else{
-      $("link[rel='stylesheet']").attr('href','/static/css/validate.css');
+      $("link[rel='stylesheet']").attr('href','/static/css/dnd.css');
       console.log("switching to normal stylesheet")
     }
   });
@@ -74,7 +74,7 @@ function handleErrors(errors){
   for(var i=0;i<errors.length;i++){
     e = errors[i];
     if(e.type == "error"){
-      var error = $('<div class="error"></div>');
+      var error = $('<div class="error"><pre></pre></div>');
       errored = 1;
     }
     else{

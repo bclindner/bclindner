@@ -44,13 +44,13 @@ body{
   background-color: #eee;
 }
 .success{
-  background-color: #45e83a;
+  background-color: rgb(0,158,115);
 }
 .warn{
   background-color: #ffe92b;
 }
 .fail{
-  background-color: #ff4949;
+  background-color: rgb(213,94,0);
 }
 .details{
   text-align: left;
@@ -61,13 +61,13 @@ body{
   background-color: #eee;
   overflow-y: scroll;
 }
-.ready > #errors, .success > #errors{
+.ready > .details, .success > .details{
   display: none;
 }
 .error{
   margin: 4px;
   padding: 4px;
-  background-color: #ff8282;
+  background-color: rgb(213,94,0);
 }
 .warning{
   margin: 4px;

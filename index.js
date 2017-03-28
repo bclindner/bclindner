@@ -23,6 +23,7 @@ app.get('/next/', (req, res) => {
 	res.render('./next/index.pug')
 })
 
-app.listen(80, () =>{
-  console.log('listening on port 80')
+var port = ((process.env.NODE_ENV == "production") ? 80 : 8000)
+app.listen(port, () =>{
+  console.log('listening on port '+port)
 })

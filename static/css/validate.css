@@ -52,7 +52,7 @@ body{
 .fail{
   background-color: #ff4949;
 }
-#errors{
+.details{
   text-align: left;
   font: 50% monospace;
   height: 240px;
@@ -61,7 +61,7 @@ body{
   background-color: #eee;
   overflow-y: scroll;
 }
-.ready > #errors, .success > #errors{
+.ready > .details, .success > .details{
   display: none;
 }
 .error{

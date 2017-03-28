@@ -61,7 +61,7 @@ body{
   background-color: #eee;
   overflow-y: scroll;
 }
-.ready > #errors, .success > #errors{
+.ready > .details, .success > .details{
   display: none;
 }
 .error{
