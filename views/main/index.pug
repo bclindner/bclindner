@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title bclindner!
+    //meta settings
+    meta(charset='utf-8')
+    meta(name='description', content="Professional Web site of Brian C. Lindner.")
+    meta(name='keyboards', content='bclindner,html,css,js,javascript,node,webdev,web development,hire me pls')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //main CSS
+    link(rel='stylesheet', href='static/css/main.css')
+    //hero images
+    link(rel='stylesheet', href='static/css/hero.css')
+  body
+    //site header and navigation
+    .headwrap
+      header
+        h2.title bclindner
+      nav
+        ul
+          li: a(href='/') home
+          li: a(href='/about') about
+          li: a(href='/projects') projects
+          li: a(href='/blog') blog
+    //main site content container
+    main
+      div.grid-1.hero-home
