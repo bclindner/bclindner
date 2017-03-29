@@ -1,21 +1,64 @@
 $fonts: Arial, sans-serif
+$accent-color: #a846ff
+$page-width: 75%
+@import common/grid
 body
   font-family: $fonts
   margin: 0
-.headwrap
-  width: 80%
+.wrap
+  width: $page-width
+  //for small screens
   min-width: 800px
+  //for ultra-wide screens
+  max-width: 1920px
   margin: 0 auto
 header
-  margin: 0 auto
-  padding: 24px
-  background-color: #a846ff
+  position: fixed
+  width: $page-width
   color: white
-  border-radius: 0 0 5px 5px
-  box-shadow: 0 4px 2px -2px gray
+  margin: 0 auto
+  height: 64px
+  background-color: $accent-color
+  box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.41)
   h2
-    margin: 0
-    padding: 0
+    z-index: 9999
+    margin: 16px
+    font-size: 32px
 nav
-  ul li
-    list-style-type: none
+  color: white
+  width: $page-width
+  position: fixed
+  ul
+    margin: 0
+    float: right
+    margin: 24px
+    li
+      list-style-type: none
+      display: inline
+      font-size: 18px
+      a
+        padding: 24px 8px
+        &:hover
+          background: darken($accent-color, 10%)
+          transition: 0.4s
+          box-shadow: inset 0 -8px 16px 0 darken($accent-color, 20%)
+        &:link, &:visited
+          color: white
+          text-decoration: none
+//clearfix
+.clear
+  clear: both
+//post-header padding
+.pad
+  height: 64px
+// main stuff
+main
+  background-color: #eee
+  margin: 0 auto
+article
+  padding: 16px
+  line-height: 150%
+section:after
+  display: table
+  content: ""
+  clear: both
