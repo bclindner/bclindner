@@ -15,6 +15,7 @@
     "csslint": "bclindner/csslint",
     "express": "^4.14.0",
     "helmet": "^3.4.0",
+    "jstransformer-markdown-it": "^2.0.0",
     "node-sass": "^4.5.1",
     "pug": "^2.0.0-beta10"
   }

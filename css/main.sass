@@ -1,9 +1,15 @@
-$fonts: Arial, sans-serif
+$fonts: Open Sans, Arial, sans-serif
 $accent-color: #a846ff
+$bg-color: #eee
+$fg-color: #ccc
 $page-width: 75%
 @import common/grid
+@import url('https://fonts.googleapis.com/css?family=Open+Sans')
 body
   font-family: $fonts
+  margin: 0
+  background-color: $bg-color
+p
   margin: 0
 .wrap
   width: $page-width
@@ -12,26 +18,31 @@ body
   //for ultra-wide screens
   max-width: 1920px
   margin: 0 auto
+  box-shadow: 0 0 32px -8px black
 header
   position: fixed
   width: $page-width
   color: white
   margin: 0 auto
   height: 64px
+  min-width: 800px
+  max-width: 1920px
   background-color: $accent-color
   box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.41)
   h2
     z-index: 9999
-    margin: 16px
-    font-size: 32px
+    margin: 12px 0 0 24px
+    font-size: 28px
 nav
   color: white
   width: $page-width
+  min-width: 800px
+  max-width: 1920px
   position: fixed
   ul
     margin: 0
     float: right
-    margin: 24px
+    margin: 18px
     li
       list-style-type: none
       display: inline
@@ -53,12 +64,22 @@ nav
   height: 64px
 // main stuff
 main
-  background-color: #eee
-  margin: 0 auto
-article
-  padding: 16px
+  font-size: 125%
   line-height: 150%
-section:after
-  display: table
-  content: ""
-  clear: both
+  background-color: $fg-color
+  margin: 0 auto
+  padding: 16px
+section
+  h1, h2, h3, h4, h5, h6, p, ul, ol
+    padding: 4px
+  &:after
+    display: table
+    content: ""
+    clear: both
+footer
+  background-color: #383838
+  padding: 24px
+  color: white
+  .copyright
+    color: #777
+    text-align: center
