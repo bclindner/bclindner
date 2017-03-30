@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start index.js --env production --name bclindner"
+    "start": "node_modules/.bin/nodemon"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +15,12 @@
     "csslint": "bclindner/csslint",
     "express": "^4.14.0",
     "helmet": "^3.4.0",
-    "jstransformer-markdown-it": "^2.0.0",
+    "markdown": "^0.5.0",
     "node-sass": "^4.5.1",
     "pug": "^2.0.0-beta10"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
   }
 }

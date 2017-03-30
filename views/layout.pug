@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    title bclindner
+    //- meta settings
+    meta(charset='utf-8')
+    meta(name='description', content="Professional Web site of Brian C. Lindner.")
+    meta(name='keyboards', content='bclindner,html,css,js,javascript,node,webdev,web development,hire me pls')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //- main CSS
+    link(rel='stylesheet', href='/static/css/main.css')
+    //- hero images
+    link(rel='stylesheet', href='/static/css/hero.css')
+    block head
+  body
+    .wrap
+      //- site header and navigation
+      header
+        h2.title bclindner
+      nav
+        block nav
+          ul
+            li: a(href='/') home
+            li: a(href='/about') about
+            li: a(href='/projects') projects
+            li: a(href='/blog') blog
+      .clear.pad
+      //- main site content container
+      block content
+        div.grid-1.hero.hero-home
+          h1.hero-text Brian C. Lindner
+        main
+          article
+            section
+              .g.grid-1
+                p Hello! I'm Brian Lindner, a Web developer currently studying at Georgia Southern University. Currently, my primary focus is on full-stack development and site optimization.
+      //- footer and sitemap
+      footer
+        block footer
+          //- section
+          //-   p asdf
+          //-   p asdf
+          //-   p asdf
+          .g.grid-1-1
+            p.copyright &copy; Copyright bclindner, 2017. All assets used with permission.
+          .clear

@@ -1,0 +1,11 @@
+extends ../layout.pug
+block content
+  .grid-1.hero.hero-home
+    h1.hero-text Blog
+  main
+    each post in posts
+      .blog-post
+        h2=post.title
+        h5.author=post.author
+        h5.date=post.date
+        p!=post.content

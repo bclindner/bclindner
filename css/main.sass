@@ -1,15 +1,19 @@
 $fonts: Open Sans, Arial, sans-serif
 $accent-color: #a846ff
-$bg-color: #eee
-$fg-color: #ccc
+$bg-color-dk: #383838
+$bg-color-lt: #eee
+$fg-color-lt: #ccc
 $page-width: 75%
 @import common/grid
 @import url('https://fonts.googleapis.com/css?family=Open+Sans')
 body
   font-family: $fonts
   margin: 0
-  background-color: $bg-color
+  background-color: $bg-color-lt
 p
+  margin: 0
+h1, h2, h3, h4, h5, h6, p, ul, ol
+  padding: 4px
   margin: 0
 .wrap
   width: $page-width
@@ -31,7 +35,7 @@ header
   box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.41)
   h2
     z-index: 9999
-    margin: 12px 0 0 24px
+    margin: 8px 0 0 18px
     font-size: 28px
 nav
   color: white
@@ -66,18 +70,16 @@ nav
 main
   font-size: 125%
   line-height: 150%
-  background-color: $fg-color
+  background-color: $fg-color-lt
   margin: 0 auto
   padding: 16px
 section
-  h1, h2, h3, h4, h5, h6, p, ul, ol
-    padding: 4px
   &:after
     display: table
     content: ""
     clear: both
 footer
-  background-color: #383838
+  background-color: $bg-color-dk
   padding: 24px
   color: white
   .copyright
