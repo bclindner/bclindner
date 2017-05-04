@@ -4,7 +4,7 @@ var compression = require('compression') // for performance
 var helmet = require('helmet') // for security
 var sassMiddleware = require('node-sass-middleware') // for CSS ease-of-use
 var app = express() // javascript is weird
-var port = ((process.env.NODE_ENV == "production") ? 80 : 8000) // set port based on production or development
+var port = process.env.PORT || 8000 // set port based on production or development
 
 // express setup
 app.set('view engine', 'pug') // set pug to our view engine
