@@ -1,7 +1,7 @@
 {
-  "name": "bclindner",
+  "name": "grading-web-tools",
   "version": "1.0.0",
-  "description": "bclindner website 2017 ver., with widgets",
+  "description": "Web tools written for validating and plagiarism checking HTML/CSS code.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,7 +15,6 @@
     "csslint": "bclindner/csslint",
     "express": "^4.14.0",
     "helmet": "^3.4.0",
-    "markdown": "^0.5.0",
     "node-sass": "^4.5.1",
     "node-sass-middleware": "^0.11.0",
     "pug": "^2.0.0-beta10"

@@ -23,13 +23,9 @@ app.use('/static',express.static('static')) // use static files located at /stat
 
 
 //validator widget
-require('./routes/widgets/validate.js')(app,require('csslint').CSSLint)
+require('./routes/validate.js')(app,require('csslint').CSSLint)
 //plagiarism checker widget
-require('./routes/widgets/pcheck.js')(app)
-//main site static routes
-require('./routes/main/static.js')(app)
-//blog functionality
-require('./routes/main/blog.js')(app)
+require('./routes/pcheck.js')(app)
 //server listen
 app.listen(port, () =>{
   console.log('listening on port '+port)

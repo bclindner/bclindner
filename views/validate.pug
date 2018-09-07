@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title drag 'n drop!
+    meta(charset='utf-8')
+    link(rel='stylesheet' href='static/css/dnd.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='static/js/validate.js')
+  body
+    div#title
+      h1 brian's unified validator
+      a(href="validate/about") (what is this?)
+    form#dndvalidator
+      div#options
+        label
+          input(type='checkbox' value='colorblind' id='colorblind')
+          span colorblind mode
+      input(type='file' name='file' id='file')
+      label(for='file')
+      div#filedrag.ready
+        p#filename
+        p#dragcontent drag an html/css file here
+        div.details#errors
